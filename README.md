@@ -1,2 +1,5 @@
-# jjs-obsidian-snippets
-My CSS snippets for Obsidian.md
+# JJ's Obsidian Snippets
+
+My CSS snippets for the notetaking app [Obsidian.md](https://obsidian.md/).
+
+Free to use & modify.
