@@ -1,0 +1,114 @@
+/* 
+2023-09-07
+https://github.com/stoneskipping/jjs-obsidian-snippets
+CSS snippet for Obsidian.md
+
+adds color to:
+	*italic*
+	**bold**
+	***bolditalic***
+	==highlight==
+	~~strikethrough~~
+	*==italic highlight==*
+	**==bold highlight==**
+	***==bolditalic highlight==**
+	~~==strikethough highlight==~~
+also adds some personal style choices to strikethroughs
+	- i might separate this into another snippet later
+	
+NOTE: currently only functional for dark theme. feel free to modify it yourself, though
+
+to-do:
+- add color variables to make color choices easier to modify
+	- maybe style settings plugin compatibility ? but not for a while
+*/
+
+/* de-emphasize markdown formatting */
+span.cm-formatting.cm-formatting-strong,
+span.cm-formatting.cm-formatting-em,
+span.cm-formatting.cm-formatting-strong.cm-em.cm-strong,
+span.cm-formatting.cm-em.cm-strong.cm-highlight,
+span.cm-formatting.cm-formatting-strong.cm-strong.cm-highlight,
+span.cm-formatting.cm-formatting-em.cm-em.cm-highlight,
+span.cm-formatting.cm-formatting-highlight.cm-highlight,
+span.cm-formatting.cm-formatting-strikethrough.cm-strikethrough,
+span.cm-formatting.cm-header.cm-strong,
+span.cm-formatting.cm-header.cm-em {
+	color: var(--text-faint);
+	background: none;
+	text-decoration: none;
+}
+
+/* bold and italic color variables */
+.theme-dark {
+	--bold-color: #e34c7e;
+	--italic-color: #25eafb;
+}
+/* bold */
+b, strong, .cm-strong, 
+.HyperMD-header .cm-header.cm-strong {
+	color: var(--bold-color);
+}
+/* italic */
+i, em, .cm-em, 
+.HyperMD-header .cm-header.cm-em {
+	color: var(--italic-color);
+}
+/* bold italic */
+.theme-dark .cm-em.cm-strong,
+.theme-dark strong em, 
+.theme-dark em strong {
+	color: #90f37c;
+}
+
+/* highlight */
+.theme-dark span.cm-formatting-highlight, 
+.theme-dark span.cm-highlight,
+.theme-dark mark {
+    color: #f2e772;
+	background-color: var(--color-d-highlight-yellow);
+}
+/* bold-highlight */
+.theme-dark .cm-highlight.cm-strong,
+.theme-dark strong mark {
+	color: #d844f9;
+	background-color: #d844f933;
+}
+/* italic highlight */
+.theme-dark .cm-highlight.cm-em,
+.theme-dark em mark {
+	color: #a54eed;
+	background-color: #a54eed33;
+}
+/* bold-italic highlight */
+.theme-dark .cm-highlight.cm-em.cm-strong,
+.theme-dark strong em mark {
+	color: #dc6114;
+	background-color: #dc611433;
+}
+/* strikethrough highlight */
+.theme-dark .cm-highlight.cm-strikethrough,
+.theme-dark del mark {
+	color: #625a95;
+	background-color: #625a9533;
+}
+
+/* strikethrough */
+.markdown-preview-view del {
+	color: var(--text-muted);
+	text-decoration-line: line-through;
+	text-decoration-color: var(--text-normal);
+	text-decoration-thickness: .6em;
+}
+/* thinner line in edit mode */
+.cm-strikethrough {
+	color: var(--text-muted);
+    text-decoration: line-through;
+	text-decoration-color: var(--text-normal);
+	text-decoration-thickness: .15em;
+}
+/* hide strikethrough on hover */
+.markdown-preview-view del:hover, 
+.cm-strikethrough:hover {
+	text-decoration: none;
+}
