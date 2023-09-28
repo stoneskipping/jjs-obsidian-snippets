@@ -3,6 +3,7 @@
 https://github.com/stoneskipping/jjs-obsidian-snippets
 CSS snippet for Obsidian.md
 tested with default theme
+OK to modify as needed
 
 adds color to:
 	*italic*
@@ -113,7 +114,9 @@ mark,
 .cm-formatting-highlight, 
 .cm-highlight,
 .HyperMD-header .cm-header.cm-highlight,
-.markdown-rendered mark {
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-formatting-highlight,
+.cm-s-obsidian span.cm-highlight {
     color: var(--highlight-color);
 	background-color: var(--highlight-bg);
 }
@@ -122,7 +125,8 @@ mark,
 strong mark, b mark,
 .cm-highlight.cm-strong,
 .HyperMD-header .cm-header.cm-highlight.cm-strong,
-.markdown-rendered strong mark {
+.markdown-rendered strong mark,
+.cm-s-obsidian span.cm-highlight.cm-strong {
 	color: var(--bold-highlight-color);
 	background-color: var(--bold-highlight-bg);
 }
@@ -131,7 +135,8 @@ strong mark, b mark,
 em mark, i mark,
 .cm-highlight.cm-em,
 .HyperMD-header .cm-header.cm-highlight.cm-em,
-.markdown-rendered em mark {
+.markdown-rendered em mark,
+.cm-s-obsidian span.cm-highlight.cm-em {
 	color: var(--italic-highlight-color);
 	background-color: var(--italic-highlight-bg);
 }
@@ -142,7 +147,8 @@ em strong mark, i b mark,
 .cm-highlight.cm-em.cm-strong,
 .HyperMD-header .cm-header.cm-highlight.cm-strong.cm-em,
 .markdown-rendered strong em mark,
-.markdown-rendered em strong mark {
+.markdown-rendered em strong mark,
+.cm-s-obsidian span.cm-highlight.cm-em.cm-strong {
 	color: var(--bi-highlight-color);
 	background-color: var(--bi-highlight-bg);
 }
