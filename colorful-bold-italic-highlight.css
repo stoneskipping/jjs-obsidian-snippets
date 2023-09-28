@@ -1,7 +1,8 @@
 /* 
-2023-09-07
+2023-09-28 (WIP)
 https://github.com/stoneskipping/jjs-obsidian-snippets
 CSS snippet for Obsidian.md
+tested with default theme
 
 adds color to:
 	*italic*
@@ -16,12 +17,54 @@ adds color to:
 also adds some personal style choices to strikethroughs
 	- i might separate this into another snippet later
 	
-NOTE: currently only functional for dark theme. feel free to modify it yourself, though
+palette inspiration from Primary by Ceciia May (:
+https://github.com/ceciliamay/obsidianmd-theme-primary
 
 to-do:
-- add color variables to make color choices easier to modify
-	- maybe style settings plugin compatibility ? but not for a while
+- maybe style settings plugin compatibility
 */
+
+/* variables */
+.theme-dark {
+	/* default variables */
+	--bold-color: hsl(4, 65%, 60%);
+	--italic-color: hsl(198, 62%, 57%);
+	
+	/* new variables for snippet */
+	--bi-color: hsl(154, 52%, 46%);
+	
+	--highlight-color: hsl(46, 91%, 69%);
+	--highlight-bg: rgba(255, 187, 0, 0.2);
+	
+	--bold-highlight-color: hsl(300, 100%, 70%);
+	--bold-highlight-bg: rgba(240, 79, 206, 0.2);
+	
+	--italic-highlight-color: hsl(256, 63%, 74%);
+	--italic-highlight-bg: rgba(113, 122, 255, 0.2);
+	
+	--bi-highlight-color: hsl(22, 92%, 64%);
+	--bi-highlight-bg: rgba(255, 115, 0, 0.2);
+}
+.theme-light {
+	/* default variables */
+	--bold-color: hsl(4, 72%, 55%);
+	--italic-color: hsl(205, 66%, 46%);
+	
+	/* new variables for snippet */
+	--bi-color: hsl(154, 47%, 49%);
+	
+	--highlight-color: hsl(43, 100%, 42%);
+	--highlight-bg: rgba(255, 187, 0, 0.2);
+	
+	--bold-highlight-color: hsl(300, 54%, 61%);
+	--bold-highlight-bg: rgba(240, 79, 206, 0.2);
+	
+	--italic-highlight-color: hsl(266, 31%, 57%);
+	--italic-highlight-bg: rgba(113, 122, 255, 0.2);
+	
+	--bi-highlight-color: hsl(26, 66%, 57%);
+	--bi-highlight-bg: rgba(255, 115, 0, 0.2);
+}
 
 /* de-emphasize markdown formatting */
 span.cm-formatting.cm-formatting-strong,
@@ -39,56 +82,80 @@ span.cm-formatting.cm-header.cm-em {
 	text-decoration: none;
 }
 
-/* bold and italic color variables */
-.theme-dark {
-	--bold-color: #e34c7e;
-	--italic-color: #25eafb;
-}
 /* bold */
-b, strong, .cm-strong, 
-.HyperMD-header .cm-header.cm-strong {
+b, strong, 
+.cm-strong, 
+.HyperMD-header .cm-header.cm-strong,
+.markdown-rendered strong {
 	color: var(--bold-color);
 }
+
 /* italic */
-i, em, .cm-em, 
-.HyperMD-header .cm-header.cm-em {
+i, em, 
+.cm-em, 
+.HyperMD-header .cm-header.cm-em,
+.markdown-rendered em {
 	color: var(--italic-color);
 }
-/* bold italic */
-.theme-dark .cm-em.cm-strong,
-.theme-dark strong em, 
-.theme-dark em strong {
-	color: #90f37c;
+
+/* bold-talic*/ 
+strong em, b i,
+em strong, i b,
+.cm-em.cm-strong,
+.HyperMD-header .cm-header.cm-em.cm-strong,
+.markdown-rendered strong em,
+.markdown-rendered em strong {
+	color: var(--bi-color);
 }
 
 /* highlight */
-.theme-dark span.cm-formatting-highlight, 
-.theme-dark span.cm-highlight,
-.theme-dark mark {
-    color: #f2e772;
-	background-color: var(--color-d-highlight-yellow);
+mark,
+.cm-formatting-highlight, 
+.cm-highlight,
+.HyperMD-header .cm-header.cm-highlight,
+.markdown-rendered mark {
+    color: var(--highlight-color);
+	background-color: var(--highlight-bg);
 }
+
 /* bold-highlight */
-.theme-dark .cm-highlight.cm-strong,
-.theme-dark strong mark {
-	color: #d844f9;
-	background-color: #d844f933;
+strong mark, b mark,
+.cm-highlight.cm-strong,
+.HyperMD-header .cm-header.cm-highlight.cm-strong,
+.markdown-rendered strong mark {
+	color: var(--bold-highlight-color);
+	background-color: var(--bold-highlight-bg);
 }
+
 /* italic highlight */
-.theme-dark .cm-highlight.cm-em,
-.theme-dark em mark {
-	color: #a54eed;
-	background-color: #a54eed33;
+em mark, i mark,
+.cm-highlight.cm-em,
+.HyperMD-header .cm-header.cm-highlight.cm-em,
+.markdown-rendered em mark {
+	color: var(--italic-highlight-color);
+	background-color: var(--italic-highlight-bg);
 }
+
 /* bold-italic highlight */
-.theme-dark .cm-highlight.cm-em.cm-strong,
-.theme-dark strong em mark {
-	color: #dc6114;
-	background-color: #dc611433;
+strong em mark, b i mark,
+em strong mark, i b mark,
+.cm-highlight.cm-em.cm-strong,
+.HyperMD-header .cm-header.cm-highlight.cm-strong.cm-em,
+.markdown-rendered strong em mark,
+.markdown-rendered em strong mark {
+	color: var(--bi-highlight-color);
+	background-color: var(--bi-highlight-bg);
 }
+
 /* strikethrough highlight */
 .theme-dark .cm-highlight.cm-strikethrough,
 .theme-dark del mark {
+	color: #625a95;
+	background-color: #625a9533;
+}
+
+.theme-light .cm-highlight.cm-strikethrough,
+.theme-light del mark {
 	color: #625a95;
 	background-color: #625a9533;
 }
@@ -100,6 +167,7 @@ i, em, .cm-em,
 	text-decoration-color: var(--text-normal);
 	text-decoration-thickness: .6em;
 }
+
 /* thinner line in edit mode */
 .cm-strikethrough {
 	color: var(--text-muted);
@@ -107,6 +175,7 @@ i, em, .cm-em,
 	text-decoration-color: var(--text-normal);
 	text-decoration-thickness: .15em;
 }
+
 /* hide strikethrough on hover */
 .markdown-preview-view del:hover, 
 .cm-strikethrough:hover {
